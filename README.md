@@ -21,7 +21,7 @@
 
 ### Semester Assignments
 
-- Link to Assignment 1: [**Assignment 1**](https://github.com/KraljBarti/HCI-2025-26-project/blob/main/assignments/1st%20assignment/1st_assignment.md)
-- Link to Assignment 2: [**Assignment 2**](https://github.com/KraljBarti/HCI-2025-26-project/blob/main/assignments/2nd%20assignment/2nd_assignment.md)
+- Link to Assignment 1: [**Assignment 1**](https://github.com/KraljBarti/HCI-2025-26-project/tree/main/assignments/1st_assignment)
+- Link to Assignment 2: [**Assignment 2**](https://github.com/KraljBarti/HCI-2025-26-project/tree/main/assignments/2nd_assignment)
 - Link to Assignment 3: [**Assignment 3**](URL_TO_ASSIGNMENT_3) <!-- Replace with actual URL -->
 <!-- Add more assignments as necessary -->
