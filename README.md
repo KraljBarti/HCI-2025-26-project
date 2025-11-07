@@ -23,5 +23,5 @@
 
 - Link to Assignment 1: [**Assignment 1**](https://github.com/KraljBarti/HCI-2025-26-project/tree/main/assignments/1st_assignment)
 - Link to Assignment 2: [**Assignment 2**](https://github.com/KraljBarti/HCI-2025-26-project/tree/main/assignments/2nd_assignment)
-- Link to Assignment 3: [**Assignment 3**](URL_TO_ASSIGNMENT_3) <!-- Replace with actual URL -->
+- Link to Assignment 3: [**Assignment 3**](https://github.com/KraljBarti/HCI-2025-26-project/tree/main/assignments/3rd_assignment)
 <!-- Add more assignments as necessary -->
