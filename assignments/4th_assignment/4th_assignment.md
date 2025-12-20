@@ -9,8 +9,8 @@ The homepage includes a hero section with the RentEase branding and dual call-to
 
 ## High-fidelity prototype
 
-![High-fidelity](High-fidelity prototype.png)
+![High-fidelity](High-fidelity_prototype.png)
 
 ## Low-fidelity prototype
 
-![Low-fidelity](Low-fidelity prototype.png)
+![Low-fidelity](Low-fidelity_prototype.png)
