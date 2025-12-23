@@ -1,4 +1,4 @@
-# RentEASE - 3rd_assignment
+# RentEASE - 5th_assignment
 
 ## Deployed application
 
