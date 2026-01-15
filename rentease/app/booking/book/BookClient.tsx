@@ -1,14 +1,12 @@
-// app/booking/book/BookClient.tsx
 "use client";
 
 import { useState, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { client } from '@/lib/contentful';
 import { supabase } from '@/lib/supabase';
-import { CheckCircle, User, Fuel, Gauge, Users, ArrowRight, ChevronLeft, Loader2 } from 'lucide-react';
+import { User, Fuel, Gauge, Users, ArrowRight, ChevronLeft, Loader2, AlertCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-// Varijante za animaciju
 const containerVariants = {
   hidden: { opacity: 0 },
   show: { opacity: 1, transition: { staggerChildren: 0.1 } }
@@ -50,10 +48,20 @@ export default function BookClient() {
   };
 
   useEffect(() => {
-    async function fetchCar() {
+    async function initializePage() {
+      // PROVJERA PRIJAVE I REDIRECT LOGIKA
+      const { data: { session } } = await supabase.auth.getSession();
+      
+      if (!session) {
+        // Pamtimo točnu rutu s ID-em auta kako bi se korisnik vratio ovdje nakon login-a
+        const currentPath = encodeURIComponent(`/booking/book?id=${carId}`);
+        router.push(`/login?returnUrl=${currentPath}`);
+        return;
+      }
+
       if (!carId) { setLoading(false); return; }
 
-      // Supabase
+      // Supabase fetch
       if (carId.length > 30) {
         const { data } = await supabase.from('cars').select('*').eq('id', carId).single();
         if (data) {
@@ -70,7 +78,7 @@ export default function BookClient() {
         }
       }
 
-      // Contentful
+      // Contentful fetch
       if (client) {
         try {
           const res = await client.getEntries({ content_type: 'car', 'fields.slug': carId, limit: 1 });
@@ -79,8 +87,8 @@ export default function BookClient() {
       }
       setLoading(false);
     }
-    fetchCar();
-  }, [carId]);
+    initializePage();
+  }, [carId, router]);
 
   const handleContinue = () => {
     if (!carId) return;
@@ -108,8 +116,7 @@ export default function BookClient() {
   const handleBack = () => router.back();
 
   if (loading) return <div className="min-h-screen flex items-center justify-center"><Loader2 className="animate-spin text-blue-600"/></div>;
-  
-  if (!car) return <div className="text-center p-10">Car not found</div>;
+  if (!car) return <div className="text-center p-10 font-bold">Car not found</div>;
 
   let carImageUrl = '';
   if (typeof car.image === 'string') {
@@ -139,13 +146,10 @@ export default function BookClient() {
           transition={{ duration: 0.5 }}
           className="bg-white rounded-2xl shadow-xl overflow-hidden mb-8 border border-gray-100"
         >
+          {/* ... Vehicle Info Sekcija (ostaje ista) ... */}
           <div className="flex flex-col md:flex-row border-b border-gray-100">
             <div className="md:w-1/3 h-48 md:h-auto relative bg-gray-100 group overflow-hidden">
-              {carImageUrl ? (
-                <img src={carImageUrl} alt={car.modelName} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center text-gray-400">No Image</div>
-              )}
+              <img src={carImageUrl} alt={car.modelName} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
             </div>
             <div className="p-8 flex-1">
               <div className="flex justify-between items-start mb-4">
@@ -168,14 +172,94 @@ export default function BookClient() {
           <div className="p-8 space-y-8">
             <h3 className="text-xl font-bold mb-6 flex items-center gap-2"><User size={20} className="text-blue-600" /> Driver Information</h3>
             <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-6" variants={containerVariants} initial="hidden" animate="show">
-                <motion.div variants={itemVariants}><label className="block text-sm font-semibold mb-2">Full Name</label><input type="text" name="fullName" value={driverData.fullName} onChange={handleInputChange} className="w-full px-4 py-3 bg-gray-50 border rounded-xl" /></motion.div>
-                <motion.div variants={itemVariants}><label className="block text-sm font-semibold mb-2">Email</label><input type="email" name="email" value={driverData.email} onChange={handleInputChange} className="w-full px-4 py-3 bg-gray-50 border rounded-xl" /></motion.div>
-                <motion.div variants={itemVariants}><label className="block text-sm font-semibold mb-2">Phone</label><input type="tel" name="phone" value={driverData.phone} onChange={handleInputChange} className="w-full px-4 py-3 bg-gray-50 border rounded-xl" /></motion.div>
-                <motion.div variants={itemVariants}><label className="block text-sm font-semibold mb-2">License</label><input type="text" name="license" value={driverData.license} onChange={handleInputChange} className="w-full px-4 py-3 bg-gray-50 border rounded-xl" /></motion.div>
+                
+                {/* FULL NAME */}
+                <motion.div variants={itemVariants}>
+                    <label className={`block text-sm font-semibold mb-2 ${errors.fullName ? 'text-red-500' : 'text-gray-700'}`}>Full Name</label>
+                    <div className="relative">
+                        <input 
+                            type="text" 
+                            name="fullName" 
+                            placeholder="e.g. John Doe"
+                            value={driverData.fullName} 
+                            onChange={handleInputChange} 
+                            className={`w-full px-4 py-3 border rounded-xl transition-all ${
+                                errors.fullName ? 'border-red-500 bg-red-50' : 'bg-gray-50 border-gray-200 focus:border-blue-500'
+                            }`} 
+                        />
+                        {errors.fullName && <AlertCircle className="absolute right-3 top-3.5 text-red-500" size={18} />}
+                    </div>
+                </motion.div>
+
+                {/* EMAIL */}
+                <motion.div variants={itemVariants}>
+                    <label className={`block text-sm font-semibold mb-2 ${errors.email ? 'text-red-500' : 'text-gray-700'}`}>Email</label>
+                    <div className="relative">
+                        <input 
+                            type="email" 
+                            name="email" 
+                            placeholder="name@example.com"
+                            value={driverData.email} 
+                            onChange={handleInputChange} 
+                            className={`w-full px-4 py-3 border rounded-xl transition-all ${
+                                errors.email ? 'border-red-500 bg-red-50' : 'bg-gray-50 border-gray-200 focus:border-blue-500'
+                            }`} 
+                        />
+                        {errors.email && <AlertCircle className="absolute right-3 top-3.5 text-red-500" size={18} />}
+                    </div>
+                </motion.div>
+
+                {/* PHONE */}
+                <motion.div variants={itemVariants}>
+                    <label className={`block text-sm font-semibold mb-2 ${errors.phone ? 'text-red-500' : 'text-gray-700'}`}>Phone</label>
+                    <div className="relative">
+                        <input 
+                            type="tel" 
+                            name="phone" 
+                            placeholder="+385 9x xxx xxxx"
+                            value={driverData.phone} 
+                            onChange={handleInputChange} 
+                            className={`w-full px-4 py-3 border rounded-xl transition-all ${
+                                errors.phone ? 'border-red-500 bg-red-50' : 'bg-gray-50 border-gray-200 focus:border-blue-500'
+                            }`} 
+                        />
+                        {errors.phone && <AlertCircle className="absolute right-3 top-3.5 text-red-500" size={18} />}
+                    </div>
+                </motion.div>
+
+                {/* LICENSE */}
+                <motion.div variants={itemVariants}>
+                    <label className={`block text-sm font-semibold mb-2 ${errors.license ? 'text-red-500' : 'text-gray-700'}`}>License Number</label>
+                    <div className="relative">
+                        <input 
+                            type="text" 
+                            name="license" 
+                            placeholder="e.g. 12345678"
+                            value={driverData.license} 
+                            onChange={handleInputChange} 
+                            className={`w-full px-4 py-3 border rounded-xl transition-all ${
+                                errors.license ? 'border-red-500 bg-red-50' : 'bg-gray-50 border-gray-200 focus:border-blue-500'
+                            }`} 
+                        />
+                        {errors.license && <AlertCircle className="absolute right-3 top-3.5 text-red-500" size={18} />}
+                    </div>
+                </motion.div>
+
             </motion.div>
+            
             <div className="pt-8 border-t border-gray-100 flex gap-4">
-               <button onClick={handleBack} className="flex-1 py-4 border-2 rounded-xl font-bold flex items-center justify-center gap-2"><ChevronLeft /> Back</button>
-               <button onClick={handleContinue} className="flex-[2] py-4 bg-blue-600 text-white rounded-xl font-bold flex items-center justify-center gap-2">Continue <ArrowRight /></button>
+                <button 
+                  onClick={handleBack} 
+                  className="flex-1 py-4 border-2 border-gray-100 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-gray-50 transition-colors"
+                >
+                  <ChevronLeft /> Back
+                </button>
+                <button 
+                  onClick={handleContinue} 
+                  className="flex-[2] py-4 bg-blue-600 text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-blue-700 hover:shadow-lg transition-all active:scale-95"
+                >
+                  Continue <ArrowRight />
+                </button>
             </div>
           </div>
         </motion.div>
