@@ -2,4 +2,4 @@
 
 ## Deployed application
 
-[**Click here to access**](https://hci-2025-26-project-beryl.vercel.app/)
+[**Click here to access**](https://hci-project-eta.vercel.app/)
