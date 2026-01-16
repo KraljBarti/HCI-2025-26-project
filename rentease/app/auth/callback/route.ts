@@ -22,7 +22,6 @@ export async function GET(request: Request) {
               cookieStore.set(name, value, options)
             );
           } catch {
-            // ignore failures in some server environments
           }
         },
       },
@@ -33,16 +32,13 @@ export async function GET(request: Request) {
     const { data, error } = await supabase.auth.exchangeCodeForSession(code);
 
     if (error) {
-      // log for server-side debugging and send user back to login with info
       console.error('Supabase OAuth exchange error:', error);
       return NextResponse.redirect(
         `${origin}/login?oauth_error=1&msg=${encodeURIComponent(error.message ?? 'unknown')}`
       );
     }
 
-    // Successful exchange with a session -> go to requested next (default /profile)
     if (data?.session) {
-      // Ensure a profile row exists (id = auth.user.id). Avoid assuming an email column.
       try {
         const user = data.user;
         if (user?.id) {
@@ -61,7 +57,6 @@ export async function GET(request: Request) {
         console.error('Profile upsert failed (non-blocking):', e);
       }
 
-      // If this OAuth flow originated from signup (next=/login), enforce login step by clearing session
       if (next.startsWith('/login')) {
         try {
           await supabase.auth.signOut();
@@ -72,12 +67,10 @@ export async function GET(request: Request) {
         return NextResponse.redirect(`${origin}/login?signup_complete=1${emailParam}`);
       }
 
-      // Otherwise, respect requested next
       const redirectUrl = next.startsWith('http') ? next : `${origin}${next}`;
       return NextResponse.redirect(redirectUrl);
     }
 
-    // No session (e.g. account created but not signed in) -> send to sign-in page
     return NextResponse.redirect(`${origin}/login?signup_complete=1`);
   }
 

@@ -1,4 +1,3 @@
-// app/booking/payment_options/PaymentClient.tsx
 "use client";
 
 import { CreditCard, Shield, CheckCircle, Lock, Loader2 } from 'lucide-react';

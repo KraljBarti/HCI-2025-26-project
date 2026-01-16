@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { supabase } from '@/lib/supabase'; // ✅ Koristi globalnu instancu!
+import { supabase } from '@/lib/supabase'; 
 
 export interface Rental {
   id: string;

@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { toast } from 'sonner';
-import { motion } from 'framer-motion'; // <--- DODANO
+import { motion } from 'framer-motion'; 
 
 // Animacijske varijante
 const containerVariants = {
@@ -63,7 +63,6 @@ export default function EditProfilePage() {
     getData();
   }, [router]);
 
-  // --- NADOGRAĐENA FUNKCIJA ZA VALIDACIJU ---
   const validateForm = () => {
     let isValid = true;
     let newErrors = { full_name: '', phone: '', location: '' };

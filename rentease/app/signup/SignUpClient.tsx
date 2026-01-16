@@ -37,18 +37,14 @@ export default function SignUpClient() {
   const emailFromUrl = searchParams.get('email');
 
   useEffect(() => {
-    // Show error message from login redirect
     if (errorFromUrl) {
       setError(errorFromUrl);
     }
-    // Pre-fill email from login redirect
     if (emailFromUrl) {
       setEmail(emailFromUrl);
     }
   }, [errorFromUrl, emailFromUrl]);
 
-  // Removed aggressive sign-out/localStorage clear on mount to avoid
-  // interfering with OAuth PKCE cookie flow.
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -102,7 +98,7 @@ export default function SignUpClient() {
         scopes,
         queryParams: {
           access_type: 'offline',
-          prompt: 'consent select_account', // OVO PRISILJAVA GOOGLE DA PITA ZA RAČUN
+          prompt: 'consent select_account', 
         },
       },
     });

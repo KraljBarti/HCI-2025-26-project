@@ -11,7 +11,6 @@ export function ImageWithFallback({ src, alt, className, ...rest }: any) {
 
   return (
     <div className={`relative overflow-hidden ${className}`}>
-        {/* Koristimo običan img tag za sada radi jednostavnosti jer Unsplash URL-ovi traže konfiguraciju u next.config.ts */}
       <img
         src={error ? ERROR_IMG_SRC : src}
         alt={alt || 'image'}

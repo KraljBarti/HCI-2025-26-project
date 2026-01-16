@@ -6,7 +6,7 @@ import { ImageWithFallback } from '../../_components/ImageWithFallback';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { supabase } from '@/lib/supabase';
-import { motion } from 'framer-motion'; // <--- DODANO
+import { motion } from 'framer-motion'; 
 
 // --- SIDEBAR RECENZIJE ---
 function SidebarReviews({ reviews }: { reviews: any[] }) {

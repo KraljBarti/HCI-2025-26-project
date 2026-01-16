@@ -38,7 +38,6 @@ export default function LoginClient() {
   const oauthError = searchParams.get('oauth_error');
   const signupComplete = searchParams.get('signup_complete');
 
-  // Prefill inputs and show message coming from redirects (signup, oauth)
   useEffect(() => {
     if (prefillEmail) setEmail(prefillEmail);
     if (msgFromUrl) setError(msgFromUrl);
@@ -46,8 +45,7 @@ export default function LoginClient() {
     if (signupComplete === '1') setNotice('Registration successful! You can now sign in.');
   }, [prefillEmail, msgFromUrl, oauthError, signupComplete]);
 
-  // If already authenticated, bounce to profile (or returnUrl)
-  // Prevents being stuck on /login after OAuth from signup.
+ 
   useEffect(() => {
     let cancelled = false;
     (async () => {
@@ -97,7 +95,6 @@ export default function LoginClient() {
     // Osiguraj da je sesija spremljena prije preusmjeravanja
     await supabase.auth.getSession();
 
-    // Ensure a profile row exists for email/password users as well
     try {
       const { data: userRes } = await supabase.auth.getUser();
       const user = userRes?.user;
@@ -123,7 +120,6 @@ export default function LoginClient() {
     // Logika preusmjeravanja nakon uspješne prijave
     if (returnUrl) {
       const target = decodeURIComponent(returnUrl);
-      // Avoid looping back to login
       if (target.startsWith('/login')) {
         router.replace('/profile');
       } else {
@@ -186,7 +182,6 @@ export default function LoginClient() {
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       
-      {/* Dekorativna pozadina */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none opacity-50">
           <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-blue-100 blur-3xl"></div>
           <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-blue-100 blur-3xl"></div>

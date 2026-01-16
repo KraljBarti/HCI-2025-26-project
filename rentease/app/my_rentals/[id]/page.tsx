@@ -7,7 +7,7 @@ import { ImageWithFallback } from '../../_components/ImageWithFallback';
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { client } from '@/lib/contentful';
-import { motion } from 'framer-motion'; // <--- DODANO
+import { motion } from 'framer-motion'; 
 
 export default function RentalDetailsPage() {
   const params = useParams();

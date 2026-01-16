@@ -58,7 +58,6 @@ export function Navigation() {
     const active = isActive(href);
     return (
       <Link href={href} className="relative px-3 py-2 group whitespace-nowrap">
-        {/* SLOVA: Vraćena na text-base za profinjeniji izgled */}
         <span className={`text-base font-medium transition-colors ${active ? 'text-blue-600 font-bold' : 'text-gray-600 group-hover:text-blue-600'}`}>
           {children}
         </span>
@@ -83,11 +82,9 @@ export function Navigation() {
       <div className="max-w-full mx-auto px-4 sm:px-8 lg:px-10">
         <div className="flex justify-between items-center h-20"> 
           
-          {/* LIJEVA STRANA: Logo i ime */}
           <div className="flex-1 flex justify-start items-center">
             <Link href="/" onClick={() => setIsOpen(false)}>
               <motion.div whileHover={{ scale: 1.05 }} className="flex items-center">
-                {/* LOGO: Postavljen na 100x100 */}
                 <Image 
                     src="/logo.svg" 
                     alt="RentEase Logo" 

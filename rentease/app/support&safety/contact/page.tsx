@@ -85,7 +85,6 @@ export default function ContactPage() {
                       <p className="text-sm text-gray-500 mb-1 font-semibold uppercase">Main Office</p>
                       <div className="flex items-start gap-2 text-gray-700">
                           <MapPin size={18} className="mt-1 text-gray-400"/>
-                          {/* 👇 AŽURIRANA ADRESA */}
                           <p>Prisoje 112<br/>21232 Dicmo<br/>Croatia</p>
                       </div>
                   </div>

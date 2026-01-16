@@ -1,9 +1,7 @@
-// app/booking/book/page.tsx
 import { Suspense } from 'react';
 import { Loader2 } from 'lucide-react';
-import BookClient from './BookClient'; // Importaj novu datoteku
+import BookClient from './BookClient'; 
 
-// Ovo govori Vercelu: "Ne pokušavaj ovo renderirati statički!"
 export const dynamic = 'force-dynamic';
 
 export default function BookPage() {

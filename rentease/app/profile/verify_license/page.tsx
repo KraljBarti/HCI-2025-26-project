@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
 import { toast } from 'sonner';
-import { motion } from 'framer-motion'; // <--- DODANO
+import { motion } from 'framer-motion'; 
 
 // Animacijske varijante
 const containerVariants = {

@@ -28,10 +28,10 @@ const features = [
     color: 'bg-yellow-100 text-yellow-600'
   },
   { 
-    icon: Zap, // Promijenio sam ikonu u "Zap" za instant
+    icon: Zap, 
     title: 'Instant Booking', 
     description: 'No waiting, book immediately.', 
-    link: '/browse_cars', // Vodi na aute (ili login)
+    link: '/browse_cars', 
     color: 'bg-purple-100 text-purple-600'
   },
 ];
@@ -41,7 +41,6 @@ export function HomeHero() {
     <>
       {/* HERO SECTION S ANIMACIJAMA */}
       <div className="relative bg-blue-900 text-white overflow-hidden">
-        {/* Ukrasni pozadinski krugovi */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 opacity-20">
             <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-blue-500 blur-3xl"></div>
             <div className="absolute top-1/2 right-0 w-64 h-64 rounded-full bg-purple-500 blur-3xl"></div>

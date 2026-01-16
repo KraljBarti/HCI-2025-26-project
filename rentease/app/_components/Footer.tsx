@@ -19,7 +19,7 @@ export default function Footer() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-center md:text-left">
           
-          {/* 1. STUPAC: Branding (Centrirano na mobitelu, lijevo na desktopu) */}
+          
           <div className="space-y-6">
             <div className="flex flex-col items-center md:items-start">
               <Image 
@@ -29,7 +29,6 @@ export default function Footer() {
                 height={100} 
                 className="mb-3 object-contain"
               />
-              {/* POVEĆANA I UPEČATLJIVIJA SLOVA */}
               <h3 className={`${logoFont.className} text-4xl font-black text-white tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600 drop-shadow-sm`}>
                 RentEase
               </h3>

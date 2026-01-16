@@ -5,12 +5,10 @@ import Link from 'next/link';
 import { useState, useMemo, useEffect } from 'react';
 import { ImageWithFallback } from '../_components/ImageWithFallback';
 import { supabase } from '@/lib/supabase';
-// 1. OVDJE SMO DODALI "Variants" U IMPORT
 import { motion, AnimatePresence, Variants } from 'framer-motion'; 
 
 const ITEMS_PER_PAGE = 6;
 
-// 2. OVDJE SMO DODALI ": Variants" TIPOVE
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   show: {
@@ -91,8 +89,6 @@ export default function BrowseClient({ initialCars }: { initialCars: any[] }) {
 
   return (
     <div className="min-h-screen bg-gray-50 relative overflow-x-hidden">
-      
-      {/* --- HEADER S ANIMACIJOM --- */}
       <div className="bg-gradient-to-br from-blue-700 via-blue-600 to-blue-800 text-white shadow-lg">
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
@@ -154,14 +150,13 @@ export default function BrowseClient({ initialCars }: { initialCars: any[] }) {
           </motion.button>
         </div>
 
-        {/* --- ANIMIRANI GRID AUTOMOBILA --- */}
         {filteredCars.length > 0 ? (
           <motion.div 
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             variants={containerVariants}
             initial="hidden"
             animate="show"
-            key={`${currentPage}-${userId || 'guest'}`} // Ključ osigurava ponovnu animaciju kod promjene stranice
+            key={`${currentPage}-${userId || 'guest'}`}
           >
             {currentCars.map((car) => (
               <motion.div key={car.id} variants={itemVariants}>

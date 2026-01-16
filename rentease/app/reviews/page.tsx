@@ -1,5 +1,5 @@
 import { supabase } from '@/lib/supabase';
-import ReviewsClient from './ReviewsClient'; // <--- UVOZIMO NOVU KOMPONENTU
+import ReviewsClient from './ReviewsClient'; 
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;

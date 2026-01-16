@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { Loader2 } from 'lucide-react';
-import BookingClient from './BookingClient'; // Uvozimo klijentsku komponentu
+import BookingClient from './BookingClient'; 
 
 export const dynamic = 'force-dynamic';
 

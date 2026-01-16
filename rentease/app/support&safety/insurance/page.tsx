@@ -1,6 +1,5 @@
 "use client";
 
-// 👇 OVDJE JE BIO PROBLEM: Dodao sam 'AlertTriangle' u import
 import { ChevronLeft, Shield, CheckCircle, XCircle, AlertCircle, FileText, Camera, Phone, AlertTriangle } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';

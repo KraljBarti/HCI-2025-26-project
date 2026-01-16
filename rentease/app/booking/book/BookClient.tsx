@@ -146,7 +146,6 @@ export default function BookClient() {
           transition={{ duration: 0.5 }}
           className="bg-white rounded-2xl shadow-xl overflow-hidden mb-8 border border-gray-100"
         >
-          {/* ... Vehicle Info Sekcija (ostaje ista) ... */}
           <div className="flex flex-col md:flex-row border-b border-gray-100">
             <div className="md:w-1/3 h-48 md:h-auto relative bg-gray-100 group overflow-hidden">
               <img src={carImageUrl} alt={car.modelName} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />

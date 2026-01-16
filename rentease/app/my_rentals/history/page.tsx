@@ -8,7 +8,7 @@ import { ImageWithFallback } from '../../_components/ImageWithFallback';
 import { supabase } from '@/lib/supabase';
 import { client } from '@/lib/contentful';
 import { toast } from 'sonner';
-import { motion, AnimatePresence } from 'framer-motion'; // <--- DODANO
+import { motion, AnimatePresence } from 'framer-motion'; 
 
 function formatDateRaw(dateString: string) {
     if (!dateString) return '';

@@ -3,7 +3,7 @@
 import { Star, ChevronLeft } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
-import { motion } from 'framer-motion'; // <--- DODANO
+import { motion } from 'framer-motion';
 
 // Varijante
 const containerVariants = {
@@ -25,7 +25,6 @@ export default function WriteReviewPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Breadcrumb */}
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <Link 

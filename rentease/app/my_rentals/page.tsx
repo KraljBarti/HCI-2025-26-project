@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { client } from '@/lib/contentful';
 import { toast } from 'sonner';
-import { motion, AnimatePresence } from 'framer-motion'; // <--- DODANO
+import { motion, AnimatePresence } from 'framer-motion'; 
 
 // --- POMOĆNE FUNKCIJE ---
 function formatDateRaw(dateString: string) {

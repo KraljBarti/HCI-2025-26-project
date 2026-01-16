@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
-import { motion } from 'framer-motion'; // <--- DODANO
+import { motion } from 'framer-motion'; 
 
 // Varijante za stagger animaciju (domino efekt)
 const containerVariants = {

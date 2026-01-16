@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { ImageWithFallback } from './_components/ImageWithFallback';
 import { client } from '@/lib/contentful'; 
-import { HomeHero } from './_components/HomeHero'; // <--- UVOZIMO NOVU KOMPONENTU
+import { HomeHero } from './_components/HomeHero'; 
 import { Star } from 'lucide-react';
 
-export const dynamic = 'force-dynamic'; // Osigurava svježe podatke
+export const dynamic = 'force-dynamic';
 
 async function getPopularCars() {
   try {
@@ -18,7 +18,7 @@ async function getPopularCars() {
       slug: item.fields.slug,
       model: item.fields.modelName,
       price: item.fields.pricePerDay,
-      rating: '5.0', // Hardkodirano za demo ili dohvati iz baze ako imaš
+      rating: '5.0', 
       image: item.fields.images?.[0]?.fields?.file?.url 
         ? `https:${item.fields.images[0].fields.file.url}` 
         : '/placeholder-car.jpg',
