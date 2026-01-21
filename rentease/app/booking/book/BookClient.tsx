@@ -49,13 +49,11 @@ export default function BookClient() {
 
   useEffect(() => {
     async function initializePage() {
-      // PROVJERA PRIJAVE I REDIRECT LOGIKA
+      // Middleware handles auth redirect - user is guaranteed to be logged in here
       const { data: { session } } = await supabase.auth.getSession();
       
       if (!session) {
-        // Pamtimo točnu rutu s ID-em auta kako bi se korisnik vratio ovdje nakon login-a
-        const currentPath = encodeURIComponent(`/booking/book?id=${carId}`);
-        router.push(`/login?returnUrl=${currentPath}`);
+        // Middleware handles redirect to login
         return;
       }
 

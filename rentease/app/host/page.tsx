@@ -4,7 +4,6 @@ import { PlusCircle, Car, TrendingUp, Calendar, DollarSign, Trash2, MapPin, Load
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
-import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { motion } from 'framer-motion'; 
 
@@ -23,7 +22,6 @@ const itemVariants = {
 };
 
 export default function HostPage() {
-  const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [cars, setCars] = useState<any[]>([]);
   
@@ -38,7 +36,7 @@ export default function HostPage() {
     async function getData() {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) {
-        router.push('/login');
+        // Middleware handles redirect to login
         return;
       }
 
@@ -108,7 +106,7 @@ export default function HostPage() {
       setLoading(false);
     }
     getData();
-  }, [router]);
+  }, []);
 
   const handleDelete = async (carId: string) => {
     if (!confirm("Jeste li sigurni da želite obrisati ovo vozilo? To će obrisati i sve buduće rezervacije!")) return;

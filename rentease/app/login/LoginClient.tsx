@@ -31,8 +31,8 @@ export default function LoginClient() {
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
 
-  // Hvatanje returnUrl parametra koji šalje BookClient
-  const returnUrl = searchParams.get('returnUrl');
+  // Hvatanje returnUrl parametra koji šalje BookClient ili redirect od middleware
+  const returnUrl = searchParams.get('returnUrl') || searchParams.get('redirect');
   const prefillEmail = searchParams.get('email');
   const msgFromUrl = searchParams.get('msg');
   const oauthError = searchParams.get('oauth_error');

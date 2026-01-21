@@ -45,7 +45,10 @@ export default function EditProfilePage() {
   useEffect(() => {
     async function getData() {
       const { data: { user } } = await supabase.auth.getUser();
-      if (!user) { router.push('/login'); return; }
+      if (!user) {
+        // Middleware handles redirect to login
+        return;
+      }
 
       setEmail(user.email || '');
 
@@ -61,7 +64,7 @@ export default function EditProfilePage() {
       setLoading(false);
     }
     getData();
-  }, [router]);
+  }, []);
 
   const validateForm = () => {
     let isValid = true;

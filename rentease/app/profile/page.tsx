@@ -4,7 +4,6 @@ import { User, Mail, Phone, MapPin, Calendar, Edit, Shield, Camera, Loader2 } fr
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
-import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { motion } from 'framer-motion'; // <--- DODANO
 
@@ -23,7 +22,6 @@ const itemVariants = {
 };
 
 export default function ProfilePage() {
-  const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [uploadingImage, setUploadingImage] = useState(false);
   
@@ -36,7 +34,7 @@ export default function ProfilePage() {
       const { data: { user } } = await supabase.auth.getUser();
 
       if (!user) {
-        router.push('/login');
+        // Middleware handles redirect to login
         return;
       }
       setUser(user);
@@ -58,7 +56,7 @@ export default function ProfilePage() {
     }
 
     getProfile();
-  }, [router]);
+  }, []);
 
   // --- UPLOAD SLIKE ---
   async function uploadAvatar(event: React.ChangeEvent<HTMLInputElement>) {
