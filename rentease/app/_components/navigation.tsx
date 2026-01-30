@@ -58,10 +58,12 @@ export function Navigation() {
     const active = isActive(href);
     return (
       <Link href={href} className="relative px-3 py-2 group whitespace-nowrap">
-        <span className={`text-base font-medium transition-colors ${active ? 'text-blue-600 font-bold' : 'text-gray-600 group-hover:text-blue-600'}`}>
+        <span className={`text-base font-semibold transition-colors ${active ? 'text-blue-700 font-extrabold' : 'text-gray-600 group-hover:text-blue-700'}`}>
           {children}
         </span>
-        <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform origin-left transition-transform duration-300 ease-out ${active ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
+        <span
+          className={`pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-1 h-1 w-[60%] rounded-full bg-gradient-to-r from-blue-400 via-blue-600 to-cyan-400 opacity-0 scale-x-0 group-hover:opacity-80 group-hover:scale-x-100 transition-all duration-300 ${active ? 'opacity-100 scale-x-100' : ''}`}
+        />
       </Link>
     );
   };
@@ -85,13 +87,7 @@ export function Navigation() {
           <div className="flex-1 flex justify-start items-center">
             <Link href="/" onClick={() => setIsOpen(false)}>
               <motion.div whileHover={{ scale: 1.05 }} className="flex items-center">
-                <Image 
-                    src="/logo.svg" 
-                    alt="RentEase Logo" 
-                    width={100} 
-                    height={100} 
-                    className="block object-contain" 
-                />
+                {/* Logo image removed as per professor's request */}
                 <span className={`${logoFont.className} -ml-4 text-3xl font-black bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-blue-500 tracking-tight`}>
                   RentEase
                 </span>
@@ -100,7 +96,7 @@ export function Navigation() {
           </div>
 
           {/* SREDINA: Linkovi (text-base) */}
-          <div className="hidden xl:flex items-center space-x-1"> 
+          <div className="hidden xl:flex items-center space-x-8"> 
             <NavLink href="/">Home</NavLink>
             <NavLink href="/browse_cars">Browse</NavLink>
             <NavLink href="/reviews">Reviews</NavLink>

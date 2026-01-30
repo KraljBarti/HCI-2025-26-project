@@ -138,10 +138,10 @@ export default function InsurancePage() {
                     viewport={{ once: true }}
                     className="relative flex items-center mb-12 md:justify-end md:flex-row-reverse"
                 >
-                    <div className="absolute left-0 w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center border-4 border-white shadow-sm z-10 md:left-1/2 md:-translate-x-1/2 text-purple-600 font-bold text-xl">3</div>
+                    <div className="absolute left-0 w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center border-4 border-white shadow-sm z-10 md:left-1/2 md:-translate-x-1/2 text-blue-600 font-bold text-xl">3</div>
                     <div className="ml-20 md:ml-0 md:mr-12 md:w-5/12">
                         <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                            <div className="flex items-center gap-3 mb-2 text-purple-700 font-bold">
+                            <div className="flex items-center gap-3 mb-2 text-blue-700 font-bold">
                                 <Phone size={20}/> Contact RentEase
                             </div>
                             <p className="text-sm text-gray-600">Call our emergency line <strong>+385 99 748 2114</strong> immediately. We will guide you on the next steps.</p>

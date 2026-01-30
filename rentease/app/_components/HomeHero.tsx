@@ -11,28 +11,28 @@ const features = [
     title: 'Easy Search', 
     description: 'Find your perfect car in seconds.', 
     link: '/browse_cars',
-    color: 'bg-blue-100 text-blue-600'
+    color: 'bg-gradient-to-br from-blue-50 to-blue-100 text-blue-900 border border-blue-100'
   },
   { 
     icon: Shield, 
     title: 'Secure & Safe', 
     description: 'Full insurance included.', 
-    link: '/support&safety/insurance', // Vodi na tvoju insurance stranicu
-    color: 'bg-green-100 text-green-600'
+    link: '/support&safety/insurance',
+    color: 'bg-gradient-to-br from-blue-50 to-blue-100 text-blue-900 border border-blue-100'
   },
   { 
     icon: Star, 
     title: 'Top Rated', 
     description: 'Trusted community reviews.', 
-    link: '/reviews', // Vodi na recenzije
-    color: 'bg-yellow-100 text-yellow-600'
+    link: '/reviews',
+    color: 'bg-gradient-to-br from-blue-50 to-blue-100 text-blue-900 border border-blue-100'
   },
   { 
     icon: Zap, 
     title: 'Instant Booking', 
     description: 'No waiting, book immediately.', 
     link: '/browse_cars', 
-    color: 'bg-purple-100 text-purple-600'
+    color: 'bg-gradient-to-br from-blue-50 to-blue-100 text-blue-900 border border-blue-100'
   },
 ];
 

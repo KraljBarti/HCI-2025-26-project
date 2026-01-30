@@ -11,28 +11,28 @@ const quickLinks = [
     description: 'Get in touch with our team directly',
     icon: Mail,
     link: '/support&safety/contact',
-    color: 'bg-blue-100 text-blue-600'
+    color: ''
   },
   {
     title: 'Insurance & Protection',
     description: 'Coverage details and damage waivers',
     icon: Shield,
     link: '/support&safety/insurance',
-    color: 'bg-green-100 text-green-600'
+    color: ''
   },
   {
     title: 'Safety Guidelines',
     description: 'Road safety and vehicle standards',
     icon: Lock,
     link: '#safety',
-    color: 'bg-purple-100 text-purple-600'
+    color: ''
   },
   {
     title: 'Terms & Policies',
     description: 'Fuel policy, cancellation & agreements',
     icon: FileText,
     link: '#',
-    color: 'bg-orange-100 text-orange-600'
+    color: ''
   },
 ];
 
@@ -112,7 +112,7 @@ export default function SupportPage() {
 
         {/* QUICK LINKS GRID */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">How can we help?</h2>
+          <h2 className="text-3xl font-extrabold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-blue-400">How can we help?</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {quickLinks.map((item, index) => {
               const Icon = item.icon;
@@ -123,9 +123,9 @@ export default function SupportPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 + (index * 0.1) }}
                     whileHover={{ y: -5 }}
-                    className="bg-white h-full rounded-2xl shadow-sm p-6 border border-gray-100 hover:shadow-xl transition-all cursor-pointer group"
+                    className="bg-gradient-to-br from-blue-50 to-blue-100 h-full rounded-2xl shadow-sm p-6 border border-blue-100 hover:shadow-xl transition-all cursor-pointer group"
                   >
-                    <div className={`${item.color} p-4 rounded-xl w-fit mb-4 group-hover:scale-110 transition-transform`}>
+                    <div className={`bg-blue-200/60 text-blue-800 p-4 rounded-xl w-fit mb-4 group-hover:scale-110 transition-transform`}>
                       <Icon size={28} />
                     </div>
                     <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
